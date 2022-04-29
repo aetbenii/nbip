@@ -23,7 +23,7 @@ public class datenbankzugriff {
 
         //Zugriff auf den postgreSQL Server
         //Aufenthalt des Servers, Port, Name der Datenbank ist case sensitive
-        String jdbcURL = "jdbc:postgresql://localhost:5432/Game";
+        String jdbcURL = "jdbc:postgresql://localhost:5432/nbip";
         String username = "postgres";
         String psw = "Admin";
 
@@ -34,18 +34,18 @@ public class datenbankzugriff {
             //Statement erlaubt Informationsaustausch über SQL mit der Datenbank
             Statement statement = con.createStatement();
             
-            int jn = JOptionPane.showConfirmDialog(null," benutzer erstellen? ");
-            if(jn == 1){
-                System.out.println("ja");
-            }else{
-                System.out.println("nein");
-            }
+//            int jn = JOptionPane.showConfirmDialog(null," benutzer erstellen? ");
+//            if(jn == 1){
+//                System.out.println("ja");
+//            }else{
+//                System.out.println("nein");
+//            }
             //statement.execute(erstelleTabelleBenutzer);
             //statement.execute(einfügenBenutzerDaten("Benjamin","Düring"));
-            ResultSet rs = statement.executeQuery("SELECT * FROM Benutzer;");
+            ResultSet rs = statement.executeQuery("SELECT * FROM spieler;");
             while(rs.next()){
                
-                System.out.println(rs.getString(1) + " " + rs.getString(2)+ " " + rs.getString(3));
+                System.out.println(rs.getString(1) + " " + rs.getString(2));
                 
             }
             System.out.println("Datenbankzugriff");
