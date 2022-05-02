@@ -1,4 +1,6 @@
 package datenbankenueben.gui;
 
-public class panelAntworten {
+import javax.swing.*;
+
+public class panelAntworten extends JPanel {
 }

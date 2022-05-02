@@ -1,4 +1,6 @@
 package datenbankenueben.gui;
 
-public class panelScore {
+import javax.swing.*;
+
+public class panelScore extends JPanel {
 }
