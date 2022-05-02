@@ -8,30 +8,25 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class panelStart extends JPanel{
-
-    private CardLayout cardLayout;
-
-
-
-    JButton btnNeuerSpieler;
+    JButton btnNeuerSpieler = new JButton("Hinzufügen!");
     JButton btnStart = new JButton("Start!");
     //GridBagLayout gridBagLayout = new GridBagLayout();
     JPanel panelcont = new JPanel();
 
 
-    ArrayList<JLabel> spielerFelder = new ArrayList<>();
+    ArrayList<JPanel> spielerFelder = new ArrayList<>();
+    ArrayList<JTextField> spielernamen = new ArrayList<>();
 
     public panelStart(){
         this.setLayout(new BorderLayout());
 
-        spielerFelder.add(new JLabel("neuer spieler"));
         panelcont.setLayout(null);
         add(panelcont, BorderLayout.CENTER);
-        panelcont.add(spielerFelder.get(0));
-        spielerFelder.get(0).setBounds(50,50,380,75);
-        spielerFelder.get(0).setOpaque(true);
-        spielerFelder.get(0).setBackground(Color.gray);
 
+        createAllLabels();
+
+        panelcont.add(btnNeuerSpieler);
+        btnNeuerSpieler.setBounds(280, 400, 160, 30);
 
         add(btnStart, BorderLayout.SOUTH);
         btnStart.setOpaque(true);
@@ -43,7 +38,26 @@ public class panelStart extends JPanel{
                 }
             }
         });
-
         this.setVisible(true);
+    }
+
+    public void createAllLabels(){
+        int x = 0;
+        int y = 75;
+        int width = 500;
+        int height = 55;
+        for (int i = 0; i < 4; i++) {
+//            spielerFelder.add(new JPanel());
+//            panelcont.add(spielerFelder.get(i));
+//            spielerFelder.get(i).setBounds(x, (y) , width,height);
+//            spielerFelder.get(i).setBackground(Color.lightGray);
+
+            spielernamen.add(new JTextField());
+            panelcont.add(spielernamen.get(i));
+            spielernamen.get(i).setBounds(60, y-5, 200, 30);
+
+            y+=75;
+        }
+        repaint();
     }
 }
