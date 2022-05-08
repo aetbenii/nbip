@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class panelStart extends JPanel{
+public class panelStart extends JPanel implements ActionListener{
     JButton btnNeuerSpieler = new JButton("Hinzufügen!");
     JButton btnStart = new JButton("Start!");
     //GridBagLayout gridBagLayout = new GridBagLayout();
@@ -27,6 +27,7 @@ public class panelStart extends JPanel{
 
         panelcont.add(btnNeuerSpieler);
         btnNeuerSpieler.setBounds(280, 400, 160, 30);
+        btnNeuerSpieler.addActionListener(this);
 
         add(btnStart, BorderLayout.SOUTH);
         btnStart.setOpaque(true);
@@ -59,5 +60,19 @@ public class panelStart extends JPanel{
             y+=75;
         }
         repaint();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == btnNeuerSpieler){
+            if(!spielernamen.get(0).getText().equals("")){
+                String halo = spielernamen.get(0).getText();
+                System.out.println(halo);
+            }else{
+
+            }
+
+        }
+
     }
 }
