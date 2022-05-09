@@ -8,9 +8,9 @@ public class Connect {
 
 
     public static Connection connect(){
-        String jdbcURL = "jdbc:postgresql://localhost:5432/nip_bd";
+        String jdbcURL = "jdbc:postgresql://localhost:5433/nbip";
         String username = "postgres";
-        String psw = "Admin";
+        String psw = "Lbshi-12345";
         Connection con = null;
 
         try{

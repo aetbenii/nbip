@@ -1,9 +1,8 @@
 package datenbankenueben.gui;
+import datenbankenueben.*;
 
-import datenbankenueben.spieler;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,9 +15,10 @@ public class panelStart extends JPanel implements ActionListener{
     JPanel panelcont = new JPanel();
     ArrayList<JTextField> spielerFelder = new ArrayList<>();
     ArrayList<JLabel> spielernamen = new ArrayList<>();
-    private int anzahlSpieler;
-
-    ArrayList<spieler> Spieler = new ArrayList<>();
+    static int anzahlSpieler;
+    static ArrayList<spieler> Spieler = new ArrayList<>();
+    static spiel Spiel;
+    static boolean ready = false;
 
     public panelStart(){
         this.setLayout(new BorderLayout());
@@ -33,7 +33,7 @@ public class panelStart extends JPanel implements ActionListener{
         btnNeuerSpieler.addActionListener(this);
 
         add(btnStart, BorderLayout.SOUTH);
-        btnStart.setOpaque(true);
+        btnStart.setEnabled(false);
         btnStart.addActionListener(this);
         this.setVisible(true);
     }
@@ -73,21 +73,36 @@ public class panelStart extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == btnNeuerSpieler){
-            if(!spielerFelder.get(0).getText().equals("")){
-                String halo = spielerFelder.get(0).getText();
-                System.out.println(halo);
+        if(e.getSource() == btnNeuerSpieler){ // BUTTON UM ALLE NEUEN SPIELER HINZUZUFÜGEN!!!
+            if(!checkifempty()){
+                for (int i = 0; i < anzahlSpieler; i++) {
+                    Spieler.add(new spieler(spielerFelder.get(i).getText()));
+                }
+                btnNeuerSpieler.setEnabled(false);
+                btnStart.setEnabled(true);
+                for (int i = 0; i < anzahlSpieler; i++) {
+                    spielerFelder.get(i).setEnabled(false);
+                    //dbinsert.spielerHinzufügen(Spieler.get(i).getName());  // WICHTIG !!!!!!!!!! WIEDER ENTKOMMENTIEREN.
+                }
             }else{
-                JOptionPane.showMessageDialog(null, "Es wurde noch kein Name eingegeben.");
+                JOptionPane.showMessageDialog(null, "Bitte gib jedem Spieler einen Namen!");
             }
         }
 
         if(e.getSource() == btnStart){
             if(Spieler.size() == anzahlSpieler){
                 myFrame.cardLayout.show(myFrame.panelCont, "2");
+                ready = true;
             }else{
                 JOptionPane.showMessageDialog(null, "Es fehlt was!");
             }
         }
+    }
+
+    public boolean checkifempty(){
+        for (int i = 0; i < anzahlSpieler; i++) {
+            if(spielerFelder.get(i).getText().equals("")) return true;
+        }
+        return false;
     }
 }

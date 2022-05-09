@@ -13,7 +13,6 @@ public class myFrame extends JFrame{
     panelScore pScore = new panelScore();
 
 
-
     myFrame(){
         this.setTitle("Keiner ist Perfekt und dabei soll es bleiben.");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
