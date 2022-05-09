@@ -23,9 +23,9 @@ public class datenbankzugriff {
 
         //Zugriff auf den postgreSQL Server
         //Aufenthalt des Servers, Port, Name der Datenbank ist case sensitive
-        String jdbcURL = "jdbc:postgresql://localhost:5433/nbip";
+        String jdbcURL = "jdbc:postgresql://localhost:5432/nip_bd";
         String username = "postgres";
-        String psw = "Lbshi-12345";
+        String psw = "Admin";
 
         String erstelleTabelleBenutzer = "CREATE TABLE Benutzer(UID serial NOT NULL PRIMARY KEY, Vorname varchar(255) NOT NULL, Nachname varchar(255) NOT NULL)";
 
@@ -48,16 +48,10 @@ public class datenbankzugriff {
                 System.out.println(rs.getString(1) + " " + rs.getString(2));
                 
             }
-            System.out.println("Datenbankzugriff");
+            //System.out.println("Datenbankzugriff");
 
         } catch (SQLException ex) {
             Logger.getLogger(datenbankzugriff.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
-
-    private static String einfügenBenutzerDaten(String vorname, String nachname) {
-        return "INSERT INTO Benutzer(Vorname, Nachname) VALUES ('"+vorname+"', '"+nachname+"')";
-    }
-
 }

@@ -2,9 +2,9 @@ package datenbankenueben.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class myFrame extends JFrame {
-
+public class myFrame extends JFrame{
     static CardLayout cardLayout = new CardLayout();
     static JPanel panelCont = new JPanel();
     panelStart pStart = new panelStart();
@@ -12,11 +12,14 @@ public class myFrame extends JFrame {
     panelAntworten pAntworten = new panelAntworten();
     panelScore pScore = new panelScore();
 
+
+
     myFrame(){
         this.setTitle("Keiner ist Perfekt und dabei soll es bleiben.");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(500, 620);
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
         //this.setResizable(false);
 
         panelCont.setLayout(cardLayout);
@@ -26,7 +29,15 @@ public class myFrame extends JFrame {
         panelCont.add(pScore, "4");
         cardLayout.show(panelCont, "1");
 
+        WindowListener listener = new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Frame frame = (Frame) e.getSource();
+                System.out.println("Fenster wurde geschlossen.");
+            }
+        };
 
+        this.addWindowListener(listener);
         this.add(panelCont);
 
         this.setVisible(true);
