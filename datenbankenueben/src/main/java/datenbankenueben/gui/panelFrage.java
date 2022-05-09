@@ -18,7 +18,7 @@ public class panelFrage extends JPanel implements ActionListener {
     panelFrage(){
         this.setLayout(null);
         try{
-            lblSpieler.setText("Spieler: "+panelStart.Spieler.get(spieler));
+            lblSpieler.setText("Spieler: "+spieler);
         }catch (Exception e){
 
         }
@@ -33,8 +33,6 @@ public class panelFrage extends JPanel implements ActionListener {
         btnNext.addActionListener(this);
         add(btnNext);
 
-
-
         setVisible(true);
     }
 
@@ -47,8 +45,21 @@ public class panelFrage extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnNext){
-            spieler++;
-            //lblSpieler.setText("Spieler: "+panelStart.Spieler.get(spieler));
+            if(spieler < panelStart.anzahlSpieler){
+                spieler++;
+                lblSpieler.setText("Spieler: "+spieler);
+            }
+            if(spieler == panelStart.anzahlSpieler){
+                btnNext.setText("Runde Beenden");
+                spieler++;
+            }else if(spieler > panelStart.anzahlSpieler){
+                spieler = 1;
+                lblSpieler.setText("Spieler: "+spieler);
+                btnNext.setText("Nächster");
+                repaint();
+                myFrame.cardLayout.show(myFrame.panelCont, "3");
+
+            }
             repaint();
         }
     }

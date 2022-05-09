@@ -17,7 +17,8 @@ public class panelStart extends JPanel implements ActionListener{
     ArrayList<JLabel> spielernamen = new ArrayList<>();
     static int anzahlSpieler;
     static ArrayList<spieler> Spieler = new ArrayList<>();
-    static spiel Spiel;
+    static spiel Spiel = new spiel("game", 3);
+    static int runde = 1;
     static boolean ready = false;
 
     public panelStart(){
