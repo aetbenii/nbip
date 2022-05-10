@@ -11,17 +11,20 @@ public class panelFrage extends JPanel implements ActionListener {
     private JLabel lblFrage = new JLabel();
     private JButton btnNext = new JButton(" Nächster ");
     private JLabel lblSpieler = new JLabel();
-
-    private int maxSpieler = panelStart.anzahlSpieler;
+    private JLabel lblRunde = new JLabel();
     private int spieler = 1;
+    int frage = 1;
+    int rund = 1;
+
 
     panelFrage(){
         this.setLayout(null);
-        try{
-            lblSpieler.setText("Spieler: "+spieler);
-        }catch (Exception e){
 
-        }
+        lblRunde.setText("Runde: "+panelStart.runde);
+        lblRunde.setBounds(300, 20, 200, 50);
+        //add(lblRunde);
+
+        lblSpieler.setText("Spieler: "+spieler);
         lblSpieler.setBounds(50, 20, 200, 50);
         add(lblSpieler);
 
@@ -32,13 +35,13 @@ public class panelFrage extends JPanel implements ActionListener {
         btnNext.setBounds(60, 300, 200, 30);
         btnNext.addActionListener(this);
         add(btnNext);
-
+        getFrage();
         setVisible(true);
     }
 
-    public static String randomFrage(){
+    public static void getFrage(){
+        System.out.println(dbselect.getFrage(1));
 
-        return null;
     }
 
 
@@ -58,7 +61,6 @@ public class panelFrage extends JPanel implements ActionListener {
                 btnNext.setText("Nächster");
                 repaint();
                 myFrame.cardLayout.show(myFrame.panelCont, "3");
-
             }
             repaint();
         }

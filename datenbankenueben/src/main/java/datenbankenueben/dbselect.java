@@ -81,4 +81,18 @@ public class dbselect {
         }
 
     }
+
+    public static String getFrage(int id){
+        String a = "";
+        Connection con = Connect.connect();
+        try(Statement statement = con.createStatement()){
+            ResultSet rs = statement.executeQuery("Select frage from frage where frageid ="+id);
+            a = rs.getString(1);
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return a;
+    }
 }

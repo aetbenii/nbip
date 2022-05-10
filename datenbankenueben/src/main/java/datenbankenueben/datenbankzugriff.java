@@ -23,7 +23,7 @@ public class datenbankzugriff {
 
         //Zugriff auf den postgreSQL Server
         //Aufenthalt des Servers, Port, Name der Datenbank ist case sensitive
-        String jdbcURL = "jdbc:postgresql://localhost:5432/nip_bd";
+        String jdbcURL = "jdbc:postgresql://localhost:5432/nbip";
         String username = "postgres";
         String psw = "Admin";
 
