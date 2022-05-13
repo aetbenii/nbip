@@ -87,7 +87,26 @@ public class dbselect {
         Connection con = Connect.connect();
         try(Statement statement = con.createStatement()){
             ResultSet rs = statement.executeQuery("Select frage from frage where frageid ="+id);
-            a = rs.getString(1);
+            while(rs.next()){
+                a = rs.getString(1);
+                System.out.println(rs.getString(1));
+            }
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return a;
+    }
+
+    public static int getAnzahlFragen(){
+       int a = 0;
+        Connection con = Connect.connect();
+        try(Statement statement = con.createStatement()){
+            ResultSet rs = statement.executeQuery("select count(antwort) from frage");
+            while(rs.next()){
+                a = Integer.parseInt(rs.getString(1));
+            }
             rs.close();
             con.close();
         } catch (SQLException e) {

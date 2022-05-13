@@ -30,8 +30,10 @@ public class panelAntworten extends JPanel implements ActionListener {
                     myFrame.cardLayout.show(myFrame.panelCont, "4");
                 }else{
                     enableAllButtons();
+                    panelFrage.lblFrage.setText(panelFrage.getFrage());
                     panelStart.runde++;
                     myFrame.cardLayout.show(myFrame.panelCont, "2");
+                    repaint();
                 }
             }
         }

@@ -83,7 +83,7 @@ public class panelStart extends JPanel implements ActionListener{
                 btnStart.setEnabled(true);
                 for (int i = 0; i < anzahlSpieler; i++) {
                     spielerFelder.get(i).setEnabled(false);
-                    dbinsert.spielerHinzufügen(Spieler.get(i).getName());  // WICHTIG !!!!!!!!!! WIEDER ENTKOMMENTIEREN.
+                    //dbinsert.spielerHinzufügen(Spieler.get(i).getName());  // WICHTIG !!!!!!!!!! WIEDER ENTKOMMENTIEREN.
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Bitte gib jedem Spieler einen Namen!");

@@ -5,10 +5,11 @@ import datenbankenueben.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class panelFrage extends JPanel implements ActionListener {
 
-    private JLabel lblFrage = new JLabel();
+    static JLabel lblFrage = new JLabel();
     private JButton btnNext = new JButton(" Nächster ");
     private JLabel lblSpieler = new JLabel();
     private JLabel lblRunde = new JLabel();
@@ -28,7 +29,7 @@ public class panelFrage extends JPanel implements ActionListener {
         lblSpieler.setBounds(50, 20, 200, 50);
         add(lblSpieler);
 
-        lblFrage.setText("HIER KOMMT EINE FRAGE HIN");
+        lblFrage.setText(getFrage());
         lblFrage.setBounds(50,50,300,50);
         add(lblFrage);
 
@@ -39,9 +40,9 @@ public class panelFrage extends JPanel implements ActionListener {
         setVisible(true);
     }
 
-    public static void getFrage(){
-        System.out.println(dbselect.getFrage(1));
-
+    public static String getFrage(){
+        Random r = new Random();
+        return dbselect.getFrage(r.nextInt(dbselect.getAnzahlFragen()));
     }
 
 
